@@ -1,293 +1,542 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sweeney Camper and Caravan Repairs</title>
+    <title>Lorcán de Bláca</title>
     <meta name="description" content="" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="author" content="Lorcan Blake" />
+    <meta name="author" content="@lorcna" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/tachyons/css/tachyons.min.css"
     />
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Rasa|Roboto&display=swap');
-      .serif{
-        font-family: 'Rasa', serif;
-      }
-      .sans-serif{
-        font-family: 'Roboto', sans-serif;
-      }
-
-      .rotate{
-        transform: rotate(-2deg);
-      }
-      .t-shadow{
-        text-shadow: rgb(0, 0, 0) 1px 0 10px;
-      }
-
-      .mt-10vh{
-        margin-top: 20vh;
-      }
-
-      .trans-3{
-        transition-duration: 3s;
+      .sticky {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
       }
     </style>
-    <script src="js/feather.min.js"></script>
-    <script src="js/smooth-scroll.polyfills.min.js"></script>
-    <script src="js/siema.min.js"></script>
   </head>
-  <body class="w-100 sans-serif white bg-white">
-
-    <div class="w-100 vh-100 z-max" style="background:url(http://4.bp.blogspot.com/-wO7S3RrMHrw/TZPoGi72T6I/AAAAAAAAAOQ/5KLaq2RZR6c/s1600/4890897083_a5b7a770b2_o.gif);"></div>
-
-    <nav class="z-max bg-blue w-100 fixed flex justify-between bb b--white-10 shadow">
-      <a class="link white-70 hover-white no-underline flex items-center pa3 " href="#">
-        <img src="img/logo-inverse-graphic.png" class="h2 rotate">
-      </a>
-      <div class="flex-grow ph2 pv3 pa3-ns flex items-center">
-        <!-- <a class="f7 f6-m f4-l link dib white dim mr2 mr4-l" href="#services">Services</a>
-        <a class="f7 f6-m f4-l link dib white dim mr2 mr4-l" href="#testimonials">Testimonials</a> -->
-        <a class="f7 f6-m f4-l dib white no-underline pa2 pa3-l br3 ba b--white-40" onclick="toggleMenu();"><i data-feather="menu" class="white w1 h1 v-mid"></i> Menu</a>
-      </div>
-    </nav>
-
-        <div
-        id="side-nav"
-        class="vh-100 fixed z-4 top-0 left-0 bg-blue verflow-x-hidden w-100"
-      >
-        <div class="pa4-l mt4 mt2-l mt-10vh">
-          <div class="flex flex-column dt border-box w-80 center w-100-l f3 f2-m f1-l fw6">
-            <a
-              class="shadow no-underline dib dtc v-mid white br1 pa2 pa3-ns mb1 mb3-ns w-100 tc"
-              href="#services"  onclick="toggleMenu();"
-            >
-              <span class="center tc">
-               
-               Services
-              </span>
-            </a>
-            <a
-              class="shadow no-underline db dtc v-mid white br1 pa2 pa3-ns mb1 mb3-ns w-100 mr2 tc"
-              href="#testimonials"  onclick="toggleMenu();"
-            >
-              <span class="center tc">
-
-                Testimonials
-              </span>
-            </a>
-      
-            <a
-              class="shadow no-underline db dtc v-mid white br1 pa2 pa3-ns mb1 mb3-ns w-100 tc"
-              href="#suppliers"  onclick="toggleMenu();"
-            >
-              <span class="center tc">
-                Suppliers
-              </span>
-            </a>
-      
-            <a
-              class="shadow no-underline db dtc v-mid white br1 pa2 pa3-ns mb1 mb3-ns w-100 tc"
-              href="#location"  onclick="toggleMenu();"
-            >
-              <span class="center tc">
-      
-                Location
-              </span>
-            </a>
-      
-         
-            <aside class="center mt4 mb2">
-              <a
-                class="shadow f7 f6-ns fw3 no-underline dib v-mid bg-white-10 white br-pill ph4 pv2 mb3 ttu"
-                onclick="toggleMenu();"> <i data-feather="x" class="v-mid"></i>
-      Close        </a>
-            </aside>
-          </div>
-        </div>
-      </div>
-
-
-    <article id="main">
-      <div
-        class="cf min-vh-100"
-        style="background: url(img/bg.png) no-repeat center center fixed; background-size: cover;"
-      >
-        <div class="min-vh-100 dtc v-mid mw6 center fl pa3 pa5-ns  f3">
-          <header class="bb b--white-90 pv5">
-            <h3 class="f2 fw7 ttu tracked lh-title mt3 mt2-l mb3 avenir">
-                <img src="img/logo-inverse-graphic.png" class="w-100 rotate">
-
-            </h3>
-            <h4 class="f3 f2-l fw4 i lh-title mt0 serif">
-              Camper and Caravan Repairs
-            </h4>
-            <h5 class="f5 f4-l fw4 lh-title mt0">
-              Old Dublin Road, Barnora, Cahir, Co. Tipperary
-            </h5>
-            <a class="f6 f5-m f4-l grow no-underline br-pill bw2 ph3 pv2 mb2 dib white b--blue bg-blue v-mid" href="tel:0858072130"><i data-feather="phone" class="v-mid"></i> 085 8072130 </a>
-            <a class="f6 f5-m f4-l grow no-underline br-pill bw2 ph3 pv2 mb2 dib white b--blue bg-blue v-mid" href="#location" target="_blank"><i data-feather="map-pin" class="v-mid"></i> View on maps </a>
-
-          </header>
-          <section class="pt4 pb4">
-            <p class="lh-copy measure f4 mt0 t-shadow">
-                MON.	9:00 a.m.	– 	6:00 p.m. <br/>
-                TUE.	9:00 a.m.	– 	6:00 p.m. <br/>
-                WED.	9:00 a.m.	– 	6:00 p.m. <br/>
-                THU.	9:00 a.m.	– 	6:00 p.m. <br/>
-                FRI.	9:00 a.m.	– 	6:00 p.m. <br/>
-                SAT.	10:00 a.m.	– 	4.30 p.m. <br/>
-                SUN.	<em class="i">closed</em>
-            </p>
-
-          </section>
-        </div>
-      </div>
-    </article>
-    <div class="w-100 vh-100 z-max" style="background:url(http://4.bp.blogspot.com/-wO7S3RrMHrw/TZPoGi72T6I/AAAAAAAAAOQ/5KLaq2RZR6c/s1600/4890897083_a5b7a770b2_o.gif);"></div>
-
+  <body class="w-100 sans-serif bg-white black-80 georgia">
     <main>
-        <article class="bg-white black">
-          <div class="ph4 ph5-m ph6-l pv3" id="services">
-            <div class="pt5 pb2 pb5-ns f4 f2-ns measure center">
-              <h1 class="fw6 f1 fl w-100 black mv3 avenir">Our Services</h1>
-              <p class="db lh-copy black serif fw1 mv0 f4 f3-m f2-l measure serif">
-                  We are a family run business with many years experience in the leisure vehicle industry.
-                  We specialize in the service and repair of campers and caravans. Our services include:
-              </p>
-            </div>
-            <div class="measure f3 center mv5 black ba b--black-20 pa2 pl4">
-              <h1 class="fw6 f3 avenir">Mechanic and pre-DOE checks</h1>
-              <h1 class="fw6 f3 avenir">Panel Beating and Accident Repair</h1>
-              <h1 class="fw6 f3 avenir">Damp work and Restoration</h1>
-              <h1 class="fw6 f3 avenir">Camper Conversions</h1>
-              <h1 class="fw6 f3 avenir">Motor home hire <div class="dib pv1 ph2 mb1 fw4 br3 f7 ttu tracked bg-orange white ba v-mid">COMING SOON</div></h1>
-            </div>
-            
-
-            <section class="cf mt5 pv5 bt b--black-05 ph6-l">
-                <h1 class="tc f5 ttu fw6 black tracked mb4 avenir">Recent Work</h1>
-                <section class="siema">
-                  <img src="img/process/1.jpg" class="db w-100 mv4" alt="" />
-                  <img src="img/process/2.jpg" class="db w-100 mv4" alt="" />
-                  <img src="img/process/3.jpg" class="db w-100 mv4" alt="" />
-                  <img src="img/process/4.jpg" class="db w-100 mv4" alt="" />
-                  <img src="img/process/5.jpg" class="db w-100 mv4" alt="" />
-                  <img src="img/process/6.jpg" class="db w-100 mv4" alt="" />
-
-                </section>
-                <span class="black-80 db measure center tc sans-serif f6 tc">Swipe or drag to view more images!</span>
-            </section>
-
-           
-            <div class="ph2 ph5-m ph6-l pv3  bt b--black-05" id="testimonials">
-                <div class="pv5 f4 f2-ns measure center">
-                  <h1 class="fw6 f4 f1-l w-100 black mv3 pt2 avenir tc">What do our customers have to say?</h1>
-                
-            <blockquote class="f5 f4-m f3-l mh0 pr0 mv4 pt2 pt5-ns mw7 center tl tc-l">
-              <p class=" fw1 mv0 lh-title serif">
-                  “We can't thank you enough for fixing our daughter's van during the night. 
-                  We are so appreciative of this especially because they are traveling in the van. 
-                  Fantastic service, absolutely brilliant. Will recommend you to all our friends.”
-                </p>
-                <p class="f6 gray">
-                  Beverley
-                </p>
-              <p class=" fw1 mv0 lh-title serif">
-                  “If you want swish reception 
-                  areas and bright lights stay away.
-                  However for practical service and economy Anthony is your man.
-                  Used him twice with successful outcomes. Recommend..
-                  ”
-                </p>
-              <p class="f6 gray">
-                  Mike
-              </p>
-              <p class=" fw1 mv0 lh-title serif">
-                  “Great work highly recommend thanks for saving my camper and my summer!
-
-                  ”
-                </p>
-              <p class="f6 gray">
-                  Jamie
-              </p>
-              <p class=" fw1 mv0 lh-title serif">
-                  “Excellent work very pleased with the results of the work great price will definitely recommend to anyone!
-                  ”
-                </p>
-              <p class="f6 gray">
-                 Mary
-              </p>
-            
-            
-              <p class="fw1 mv0 lh-title serif">
-                “A top class service..I can't fault their work, attention to detail or customer service. 
-                The guys at Sweeney camper and caravan repairs bent over backwards to get us back 
-                on the road in time for our trip to the Euros. 
-                Thanks again guys!”
-              </p>
-              <p class="f6 gray">
-                Danny
-              </p>
-
-              
-            </blockquote>
+      <article class="cf pa3 mw9 center">
+        <header class="fl w-100 w-third-ns pa3-m pa4-l mb3 mb5-l">
+          <h2 class="lh-title f4 b mt0">
+            <a class="link black-80" href="#">Lorcán de Bláca</a>
+          </h2>
+          <!-- <img class="lh-title w5" src="sig.png" /> -->
+        </header>
+        <header class="fl w-100 w-third-ns pa3-m pa4-l mb3 mb5-l">
+          <span class="lh-title f4 mt0 v-mid"
+            >Lecturer, designer and technologist.</span
+          >
+          <!-- <span class="lh-title i f4 mt0 v-mid">Writing > Notes</span> -->
+        </header>
+        <header class="fl w-100 w-third-ns pa3-m pa4-l mb3 mb5-l">
+          <span class="lh-title f4 mt0 v-mid dark-red">COVID-19</span>
+          <!-- <span class="lh-title i f4 mt0 v-mid">Writing > Notes</span> -->
+        </header>
+        <section class="fl w-100 sticky bg-white z-max">
+          <div class="bt b--black-10 mt2 fl w-100 w-third-l pa3-m pa4-l">
+            <cite class="f6 b ttu tracked fs-normal">past</cite>
+            <!-- 
+            <ul class="f6 lh-copy measure">
+              <li>
+                Designed and built
+                <a
+                  href="https://piwalo.github.io/"
+                  class="link black bb b--dark-pink"
+                  >Piwalo</a
+                >.
+              </li>
+              <li>
+                Student tutor at
+                <a
+                  href="http://tipperary.etb.ie/"
+                  class="link black bb b--green"
+                  >Tipperary ETB</a
+                >.
+              </li>
+              <li>
+                Web &amp; User Experience developer at
+                <a
+                  href="https://www.cartrawler.com/"
+                  class="link black bb b--dark-green"
+                  >Cartrawler</a
+                >.
+              </li>
+              <li>
+                Focused on digital media experiences at
+                <a
+                  href="https://lit.ie/courses/LC517"
+                  class="link black bb b--dark-red"
+                  >LIT-LSAD</a
+                >.
+                Perfect typography depends on perfect harmony between all of its
+              elements. Harmony is determined by relationships or proportions.
+              Proportions are hidden everywhere. words themselves.
+              </li>
+            </ul> -->
           </div>
+          <div class="bt b--black-30 mt2 fl w-100 w-third-l pa3-m pa4-l">
+            <cite class="f6 b ttu tracked fs-normal">present</cite>
+
+            <!-- <p class="f6 lh-copy measure">
+              Facilitator and mentor at
+              <a
+                href="https://www.ireland.inco-group.co/"
+                class="link black bb b--dark-blue"
+                >INCO Academy</a
+              >. True book design, therefore, is a matter of tact (tempo,
+              rhythm, touch) alone. It flows from something rarely appreciated
+              today: good taste. The book designer strives for perfection; yet
+              knows is it never reached.
+            </p> -->
           </div>
-                
+          <div class="bt b--black-10 mt2 fl w-100 w-third-l pa3-m pa4-l">
+            <cite class="f6 b ttu tracked fs-normal">future</cite>
+
+            <!-- <p class="f6 lh-copy measure">
+              Founder at
+              <a
+                href="https://www.ireland.inco-group.co/"
+                class="link black bb b--dark-blue"
+                >De Bláca Creative Institute</a
+              >.
+              In a masterpiece of typography, the artist's signature has been
+              eliminated. What some may praise as personal styles are in reality
+              small and empty peculiarities, frequently damaging, that
+              masquerade as innovations.
+            </p> -->
+          </div>
+        </section>
+        <section class="fl w-100">
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object"
+                    style="background: url('sig.png') center;"
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns"></article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <h4 class="f5 f4-l fw6">Careers in Technology</h4>
+                <span class="f7 f6-l db black-70"
+                  >A one-month course to discover about the opportunities in the
+                  tech industry and understand where you fit into it. Design and
+                  build your first website, and learn some basic code.</span
+                >
+                <span class="f7 f6-l di black-70">
+                  Dublin, IE
+                </span>
+                <a
+                  href="tel:+13235555555"
+                  class="f6 db fw6 pv3 link dim black-70"
+                  title="Call the LA office."
+                >
+                  Enroll
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0002.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0008.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0001.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0014.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0019.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0006.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-m w-third-l pv3 pa3-m pa4-l">
+            <div class="mh0 pa2 pb4-l ba b--black-70 grayscale">
+              <article class="w-100 mw6-ns center pt2 pt4-ns">
+                <div class="aspect-ratio aspect-ratio--6x4 mb4 ba b--black-10">
+                  <div
+                    class="aspect-ratio--object cover"
+                    style="
+                      background: url('http://mrmrs.github.io/images/0007.jpg')
+                        center;
+                    "
+                  ></div>
+                </div>
+              </article>
+
+              <div class="ph3-ns pv1 pv3-ns mw5 mw6-ns center">
+                <blockquote
+                  class="athelas tl ml0 mt0 pl2 pl3-ns black-90 bl bw2 b--silver"
+                >
+                  <p class="f6 f5-m f4-l lh-copy measure mt0">
+                    A localised open innovation ecoystem named Piwalo.
+                  </p>
+                  <cite class="f7 f6-ns ttu tracked fs-normal"
+                    >Front-end, Graduate Thesis</cite
+                  >
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer class="min-vh-100 pa4 pa6-l black-70 bt b--black-10">
+      <div class="mb4-l cf">
+        <h1 class="fl w-100 pv0 f6 fw6 ttu tracked mb4">Online Courses</h1>
+        <article class="fl w-50 dib-ns w-auto-ns mr4-m mr5-l mb4 pr2 pr0-ns">
+          <h4 class="f5 f4-l fw6">Careers in Technology</h4>
+          <span class="f7 f6-l db black-70">837 Larkin St.</span>
+          <span class="f7 f6-l black-70">San Francisco, CA 94109 </span>
+          <a
+            class="f6 db fw6 pv3 black-70 link dim"
+            title="Call SF"
+            href="tel:+12075555555"
+          >
+            Enroll
+          </a>
         </article>
-        <section class="cf mt5 pv5 bt b--black-05 ph6-l" id="suppliers">
-          <h1 class="pt4 pb3 tc f5 ttu fw6 black tracked mb4 avenir">Supplier of leading brands including..</h1>
+        <article class="fl w-50 dib-ns w-auto-ns mr4-m mr5-l mb4 pl2 pl0-ns">
+          <h4 class="f5 f4-l fw6">Digital Project Management</h4>
+          <span class="f7 f6-l db black-70">
+            1111 Manor Way
+          </span>
+          <span class="f7 f6-l di black-70">
+            Los Angeles, CA 90048
+          </span>
+          <a
+            href="tel:+13235555555"
+            class="f6 db fw6 pv3 link dim black-70"
+            title="Call the LA office."
+          >
+            Enroll
+          </a>
+        </article>
+        <article class="fl w-50 dib-ns w-auto-ns mr4-m mr5-l mb4 pr2 pr0-ns">
+          <h4 class="f5 f4-l fw6">Programming Fundamentals</h4>
+          <span class="f7 f6-l db black-70">11 Downey St.</span>
+          <span class="f7 f6-l black-70">London, UK</span>
+          <a
+            href="tel:+5555555555"
+            class="link dim f6 db fw6 pv3 black-70"
+            title="Call the London office"
+            >Enroll</a
+          >
+        </article>
+        <article class="fl w-50 dib-ns w-auto-ns mb4 pl2 pl0-ns">
+          <h4 class="f5 f4-l fw6">Interaction Design</h4>
+          <span class="f7 f6-l db black-70">1982 Flangan Rd.</span>
+          <span class="f7 f6-l">Shinjuku, Tokyo</span>
+          <a
+            href="tel:+444444444444"
+            class="f6 db dim fw6 pv3 link black-70"
+            title="Call Tokyo Office"
+          >
+            Enroll
+          </a>
+        </article>
+      </div>
+      <section class="cf mb5">
+        <div class="mb4 mb0-ns fl w-100 w-50-l">
+          <p class="f4 fw6 mb2 f6 mt0">
+            Sign up for our newsletter.
+          </p>
+          <input
+            placeholder="Email Address"
+            class="mw-100 w-100 w5-ns f5 input-reset ba b--black-20 pv3 ph4 border-box"
+          />
+          <input
+            type="submit"
+            class="ttu input-reset w-100 w-auto-ns bg-black-80 white f5 pv2 pv3-ns ph4 ba b--black-80 bg-hover-mid-gray"
+          />
+        </div>
+      </section>
+      <div class="dt dt--fixed w-100">
+        <div class="dn dtc-ns v-mid">
+          <p class="f7 black-70 dib pr3 mb3">
+            Copyright © Lorcan Blake 2020
+          </p>
+          <p class="f7 black-70 dib pr3 mb3">
+            Last updated: 20 June 2039
+          </p>
+        </div>
+        <div class="db dtc-ns black-70 tc tr-ns v-mid">
+          <a href="https://twitter.com/" class="link dim dib mr3 black-70">
+            <svg
+              class="db w2 h2"
+              data-icon="twitter"
+              viewBox="0 0 32 32"
+              fill="currentColor"
+            >
+              <title>twitter icon</title>
+              <path
+                d="M2 4 C6 8 10 12 15 11 A6 6 0 0 1 22 4 A6 6 0 0 1 26 6 A8 8 0 0 0 31 4 A8 8 0 0 1 28 8 A8 8 0 0 0 32 7 A8 8 0 0 1 28 11 A18 18 0 0 1 10 30 A18 18 0 0 1 0 27 A12 12 0 0 0 8 24 A8 8 0 0 1 3 20 A8 8 0 0 0 6 19.5 A8 8 0 0 1 0 12 A8 8 0 0 0 3 13 A8 8 0 0 1 2 4"
+              ></path>
+            </svg>
+          </a>
 
-          <img src="img/suppliers/thetford.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/dometic.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/truma.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/alko.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/fiamma.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/trigano.png" class="dib  ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/autotrail.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/kronings.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/maxview.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/flojet.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/shurflo.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/caraflo.png" class="dib ma2 h2 h3-ns" alt="" />
-          <img src="img/suppliers/lumo.png" class="dib ma2 h2 h3-ns" alt="" />
+          <a
+            href="https://www.linkedin.com/company/"
+            class="link dim dib black-70"
+          >
+            <svg class="db w2 h2" x="0px" y="0px" viewBox="0 0 48 48">
+              <linearGradient
+                gradientUnits="userSpaceOnUse"
+                x1="23.9995"
+                y1="0"
+                x2="23.9995"
+                y2="48.0005"
+              >
+                <stop offset="0"></stop>
+                <stop offset="1"></stop>
+              </linearGradient>
+              <path
+                fill="currentColor"
+                d="M48,42c0,3.313-2.687,6-6,6H6c-3.313,0-6-2.687-6-6V6 c0-3.313,2.687-6,6-6h36c3.313,0,6,2.687,6,6V42z"
+              ></path>
+              <g>
+                <g>
+                  <path
+                    fill="#FFFFFF"
+                    d="M15.731,11.633c-1.608,0-2.658,1.083-2.625,2.527c-0.033,1.378,1.018,2.494,2.593,2.494 c1.641,0,2.691-1.116,2.691-2.494C18.357,12.716,17.339,11.633,15.731,11.633z M13.237,35.557h4.988V18.508h-4.988V35.557z M31.712,18.748c-1.595,0-3.222-0.329-4.956,2.36h-0.099l-0.087-2.599h-4.417c0.065,1.411,0.074,3.518,0.074,5.52v11.529h4.988 v-9.854c0-0.46,0.065-0.919,0.196-1.248c0.328-0.919,1.149-1.871,2.527-1.871c1.805,0,2.527,1.411,2.527,3.479v9.494h4.988V25.439 C37.455,20.713,34.993,18.748,31.712,18.748z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="db dn-ns">
+        <p class="f7 black-70 mt4 tc">
+          Copyright © Lorcan Blake 2020
+        </p>
+        <p class="f7 black-70 mt4 tc">
+          Last updated: 20 June 2039
+        </p>
+      </div>
+    </footer>
 
-        </section>
-        <div class="w-100 vh-100 z-max" style="background:url(http://4.bp.blogspot.com/-wO7S3RrMHrw/TZPoGi72T6I/AAAAAAAAAOQ/5KLaq2RZR6c/s1600/4890897083_a5b7a770b2_o.gif);"></div>
+    <style id="stylish-4" class="stylish" type="text/css">
+      @namespace url(http://www.w3.org/1999/xhtml);
 
-        <section class="mw9 mb2 pv5 bt b--black-05 center cf" id="location">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.676201889829!2d-7.920357023870626!3d52.38216163212129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48433210f09b3dab%3A0xc34988b728c67898!2sSweeney+Camper+and+Caravan+Repairs!5e0!3m2!1sen!2sie!4v1560519464007!5m2!1sen!2sie" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-          <div class="tc mv3 pv4">
-              <a class="f6 dib bg-blue white grow no-underline pa2 ph4-ns br-pill ba b--black-20" href="https://www.facebook.com/Sweeneycamperandcaravanrepairs1/" target="_blank"><i data-feather="facebook" class="w1 h1 v-mid"></i> See our Facebook page for latest updates!</a>
-            </div>
-        </section>
-      </main>
+      body,
+      input,
+      .navigator-toolbox,
+      .toolbarbutton-text,
+      .sidebar-title {
+        text-shadow: 0px 0px 1px #acacac;
+      }
+    </style>
+    <style id="stylish-6" class="stylish" type="text/css">
+      /* The emerging W3C standard
+   that is currently Firefox-only */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: transparent #eee;
+      }
 
-      <footer class="cf mv4 pv5 ph3 ph5-m ph6-l black bt b--black-10">
-         
-        <small class="f6 db tc">© <span class="ttu">Sweeney Camper and Caravan Repair</span>., All Rights Reserved</small>
-        <small class="mt3 f6 db tc i">Thanks for stopping by!</small>
-      </footer>
+      /* Works on Chrome/Edge/Safari */
+      *::-webkit-scrollbar {
+        width: 0.5vw;
+      }
+
+      *::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      *::-webkit-scrollbar-thumb {
+        background-color: #eee;
+        border-radius: 10px;
+        border: 3px solid transparent;
+      }
+
+      *::-webkit-scrollbar-thumb:hover {
+        background-color: #ddd;
+      }
+    </style>
+    <script type="text/javascript" src="blaca.js"></script>
     <script>
-        feather.replace();
-        var scroll = new SmoothScroll('a[href*="#"]');
-        new Siema();
-
-
-        var primNav = document.getElementById("prim-nav");
-        var sideNav = document.getElementById("side-nav");
-        sideNav.style.display = "none";
-
-        function toggleMenu(){
-          if (sideNav.style.display === "none") {
-              sideNav.style.display = "block";
-          }else {
-              sideNav.style.display = "none";
-            }
-        }
-      </script>
+      getInfoFromArena();
+    </script>
   </body>
 </html>
