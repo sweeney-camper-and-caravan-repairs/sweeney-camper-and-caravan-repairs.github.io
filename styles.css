@@ -1,0 +1,446 @@
+@charset "UTF-8";
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+}
+
+:root {
+  --font-size: 18px;
+  --line-height: 1.4rem;
+
+  --base-unit: 5vh; /* used to be vw, but vh works better */
+  --base-unit-half: calc( var(--base-unit) / 2.0 );
+
+  --top-padding: 5vh;
+
+  --column-width: min(480px, 50vw);
+  --column-height: 80vh;
+  --column-gap: var(--base-unit);
+
+  --paper-hue: 100;
+  --paper-saturation: 50%;
+  --paper-lightness: 99%;
+  --paper-color: hsla( var(--paper-hue), var(--paper-saturation), var(--paper-lightness), 1.0 );
+
+  --spot-color: rgb(2, 2, 2);
+  --text-color: rgb(5, 5, 5);
+}
+
+html {
+  font-size: var(--font-size);
+  overflow: hidden; /* the key, always */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Times New Roman", "Times", "Georgia", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: var(--line-height);
+  background-color: var(--paper-color);
+
+  color: $text-color;
+  /* text-align: justify; */
+
+  height: 100vh; /* so scrollbar appears at bottom */
+
+  overflow-y: hidden;
+  overflow-x: auto;
+   overflow-x: hidden;
+
+  margin: 0;
+  padding: var(--top-padding) 0 0 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  background-color: transparent;
+  touch-action: manipulation;
+}
+
+nav {
+  position: fixed;
+
+  top: calc( var(--top-padding) + var(--base-unit) );
+  left: calc( 50vw - var(--column-width) * 0.45);
+  width: calc( var(--column-width) * 1 );
+  height: calc( var(--column-height) - var(--base-unit) * 2.0 );
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  background-color: hsla(var(--paper-hue), calc(var(--paper-saturation) * 2.0), var(--paper-lightness), 1.0);
+
+  border: 1px solid var(--spot-color);
+
+  padding: var(--base-unit);
+
+  z-index: 10000;
+  transition: opacity 0.1s;
+}
+
+nav.visible {
+  pointer-events: auto;
+  opacity: 1.0;
+}
+
+nav.invisible {
+  pointer-events: none;
+  opacity: 0.0;
+}
+
+nav div.controls {
+  position: fixed;
+  /* this is getting a bit silly... */
+
+  top: calc( var(--top-padding) + var(--base-unit) + var(--base-unit) );
+  right: calc( 50vw - var(--column-width) * 0.45);
+
+  width: 8%;
+  height: calc( var(--column-height) - var(--base-unit) * 4.0 );
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-left: 1px solid var(--spot-color);
+}
+
+nav div.controls button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  flex-shrink: 0;
+
+  padding: 0;
+
+  margin: 0 0 var(--base-unit-half) 0;
+  text-align: left;
+  color: var(--spot-color);
+  cursor: pointer;
+}
+
+nav div.controls button:hover {
+  color: var(--text-color);
+}
+
+nav h1 {
+  width: 90%;
+  font-size: 1rem;
+  line-height: var(--line-height);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0 0 var(--line-height) 0;
+  padding: 0;
+}
+
+nav ol {
+  width: 90%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ol li {
+  font-size: 1rem;
+  line-height: var(--line-height);
+  margin-bottom: var(--line-height);
+}
+
+nav ol li:last-of-type {
+  margin-bottom: 0;
+}
+
+button#nav-button {
+  position: fixed;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  left: 50vw;
+  bottom: 0; /* calc( var(--top-padding) - var(--base-unit) * 0.666 ); /* to match the top */
+  width: calc( var(--base-unit) * 2.0 );
+  height: var(--base-unit);
+  transform: translateX(-50%) translateY(-50%);
+
+  border: 1px solid var(--text-color);
+
+  z-index: 100000;
+  background-color: var(--paper-color);
+}
+
+button#nav-button:hover {
+  fill: var(--spot-color);
+  border: 1px solid var(--spot-color);
+}
+
+button#nav-button svg {
+  flex-grow: 1;
+
+}
+
+div.book div.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: var(--column-width);
+  height: calc( var(--column-height) - 1px ); /* full 100vh was causing an extra page break */
+
+  text-align: center;
+  /* break-after: column; */
+}
+
+div.book div.title h1 {
+  flex-grow: 0;
+  margin: 0;
+  padding: 0;
+
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: calc( var(--line-height) * 2.0 );
+  text-transform: lowercase;
+  font-variant-caps: small-caps;
+}
+
+div.book div.title h1 span {
+  display: block;
+}
+
+div.book div.title h2 {
+  flex-grow: 0;
+  margin-top: var(--line-height);
+}
+
+h2 {
+  margin: calc( var(--line-height) * 6.0 ) 0 calc( var(--line-height) * 2.0 ) 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: calc( var(--line-height) * 2.0 );
+  font-style: italic;
+  break-before: column;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+h2 a{
+  text-decoration: none;
+}
+
+h3 {
+    font-size: 1.075rem;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+}
+
+a, a:link, a:visited {
+  color: var(--spot-color);
+}
+
+a:hover, h2 a:active {
+  color: var(--text-color);
+}
+
+blockquote {
+  font-style: italic;
+  margin: 0;
+  padding: var(--base-unit);
+  background-color: rgba(0, 0, 0, 0.125)
+  break-before: avoid-column;
+}
+
+div.book {
+  position: relative;
+
+  -webkit-perspective: 1;
+
+  margin: var(--base-unit-half);
+
+  height: var(--column-height);
+  width: var(--column-width); /* must match column-width, or am fucked */
+
+  column-count: auto;
+  column-width: var(--column-width);
+  column-gap: var(--base-unit);
+  column-fill: auto;
+  /* column-rule: 1px solid gray; */
+}
+
+div.shade {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - var(--column-width) - var(--base-unit)) / 2.0);
+  z-index: 1000;
+  /* backdrop-filter: blur(1px); */
+  --shade-color-destination: hsla(var(--paper-hue), var(--paper-saturation), var(--paper-lightness), 0.0);
+  --shade-color-origin: hsla(var(--paper-hue), var(--paper-saturation), var(--paper-lightness), 0.5);
+}
+
+div.left-shade {
+  left: 0;
+  /*background-color: hsla(var(--paper-hue), var(--paper-saturation), 75%, 1.0);*/
+  background: linear-gradient(to right,
+                              var(--shade-color-origin) 0%,
+                              var(--shade-color-origin) 95%,
+                              var(--shade-color-destination) 100%);
+}
+
+div.right-shade {
+  right: 0;
+  /*background-color: hsla(var(--paper-hue), var(--paper-saturation), 75%, 1.0);*/
+  background: linear-gradient(to left,
+                              var(--shade-color-origin) 0%,
+                              var(--shade-color-origin) 95%,
+                              var(--shade-color-destination) 100%);
+}
+
+p.double:after {
+  /*
+  display: block;
+  content: "";
+  break-after: column;
+  */
+}
+
+p.double {
+  position: relative;
+  /* this is a truly ugly and glorious hack! */
+  height: calc(var(--column-height) + 1px);
+  break-before: column;
+  break-after: column;
+}
+
+p.double img {
+  position: absolute;
+  top: 50%;
+  transform: translateX(var(--base-unit-half)) translateY(-50%);
+
+  /* if you put images with too square an aspect ratio in here, they'll flow over onto the next column, too. */
+  /* so reserve this for truly wide-screen images */
+  width: calc(2 * var(--column-width) + 2 * var(--base-unit));
+  height: auto;
+  overflow: visible;
+  will-change: transform; /* https://stackoverflow.com/questions/29624396/when-using-column-count-overflowing-content-completely-disappears-in-all-but-fi */
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  text-indent: var(--base-unit-half);
+}
+
+p.spacetime {
+  margin-top: var(--line-height);
+  text-indent: 0;
+}
+
+small {
+  font-size: 1.05rem;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-variant-caps: small-caps;
+  hyphens: none;
+}
+
+img, video {
+  display: block;
+  /* this was sort of interesting but, for now, nah */
+  /* transform: translateX( var(--base-unit-half) ); */
+  /* width: calc(var(--column-width) + var(--base-unit)); */
+  width: var(--column-width);
+  /*max-width: 100%;*/
+  mix-blend-mode: multiply;
+  height: var(--column-height);
+  max-height: var(--column-height);
+  object-fit: contain; /* THIS MIGHT CAUSE PROBLEMS */
+
+
+  break-before: column;
+  -webkit-column-break-before: always;
+  -webkit-column-break-inside: avoid;
+}
+
+hr {
+  border: none;
+  width: 50%;
+  border-bottom: 1px solid #000;
+  margin: var(--base-unit) auto var(--base-unit) auto;
+  break-after: avoid-column;
+  /* break-after: column; */
+}
+
+div.last-page {
+  break-after: column;
+   margin-right: 100vw;
+   display:block;
+}
+
+div.last-page::after {
+  display: block;
+
+  content: "";
+  height: var(--column-height);
+ 
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --column-width: calc(100vw - var(--base-unit));
+    --top-padding: 5vh;
+    --column-height: 70vh; /* to compensate for mobile browser chrome */
+  }
+
+  body {
+    height: calc( var(--column-height) + var(--top-padding) * 2.0 );
+    /* having this still set at 100vh was causing that weird mobile slip problem */
+  }
+
+  div.shade {
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 640px) {
+  div.book {
+    margin-left: calc(50vw - var(--column-width) / 2.0);
+  }
+}
+
+@media print {
+  html {
+    margin: var(--base-unit);
+    overflow: auto;
+  }
+
+  body {
+    margin: 0;
+    border: 1px solid red;
+    overflow: auto;
+    height: auto;
+  }
+
+  div.book {
+    margin: 0;
+    color: red;
+    height: auto;
+    width: 100%;
+    column-width: auto;
+    column-count: 2;
+    column-gap: 4rem;
+    column-fill: balance;
+
+    text-align: justify;
+  }
+
+  hr {
+    break-after: auto;
+  }
+}
