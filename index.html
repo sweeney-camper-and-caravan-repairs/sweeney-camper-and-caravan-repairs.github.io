@@ -1,233 +1,786 @@
-<html lang="en"><head>
-<title>Home | Simplify tech</title>
-<meta name="description" content="Tachyons Component">
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="author" content="@lorcna">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/tachyons.min.css">
-<style>
-  .blue { color: #0074D9; }
-  .bg-blue { background-color: #0074D9; }
+<!DOCTYPE html>
+<html lang="en">
+  <!--
 
-</style>
+Don't worry, spiders,
+I keep house
+casually.
 
-<body class="w-100 sans-serif bg-white">
-<main>
- <section class="pa2 pa4-m pa5-l">
-  <article class=" relative ba b--black-20 mw8 center">
+Kobayashi Issa
 
-<nav class="tc pa2 pv3-ns bb b--black-10 f6 f5-ns b">
-    <a class="link dim black b f6 f5-ns dib mr4" href="index.html" title="Home">Home</a>
-    <a class="link dim black-30 b f6 f5-ns dib mr4" href="library.html" title="Library">Library</a>
-    <a class="link dim black-30 dib mr4" href="courses.html" title="Courses">Courses</a>
-    <a class="link dim black-30 dib mr0" href="search.html" title="Search">Search</a>
-</nav>
+-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=0.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="generator" content="The very hands of Sloan" />
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <title>"A Portfolio, A Life"</title>
+    <script>
+      const realColor =
+        "hsla(var(--paper-hue), var(--paper-saturation), 100%, 1.0)";
 
-<nav class="tc pa2 pv3-ns bb b--black-10 dn db-ns">
-  <a class="serif link b i f6 dib mr3" title="Home">Popular</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="lesson.html" title="Home">How to Speak</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="lesson.html" title="Store">Teaching Online</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="lesson.html" title="Store">Using Props</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="lesson.html" title="Contact">Tech &amp; Mental Health</a>
-  <a class="link dim gray    f6 f5-ns dib" href="#" title="Contact">(...)</a>
-</nav>
+      const offColor =
+        "hsla(var(--paper-hue), var(--paper-saturation), 99%, 1.0)";
 
-<!-- <nav class="tc pa2 pv3-ns bb b--black-10 dn db-ns">
-  <a class="serif link b i f6 dib mr3" title="Home">Latest</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="#" title="Home">Product Design</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="#" title="Store">User Experience</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="#" title="Store">Front-end</a>
-  <a class="link dim gray    f6 f5-ns dib" href="#" title="Contact">Visual Design</a>
-</nav> -->
+      // https://github.com/iamdustan/smoothscroll/blob/master/src/smoothscroll.js
+      function smoothScroll(x) {
+        var startTime = performance.now();
+        var startX = document.body.scrollLeft;
+        var startY = 0;
 
-<article class="pa3 pa5-ns tc">
-  <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 bn b--black-10">
-    <div class="tc">
-      <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGVhVroHDKFHQ/profile-displayphoto-shrink_200_200/0?e=1597881600&amp;v=beta&amp;t=9M0Y660qWNoeKXClpZJuSTPafRy9p4pLYuTv57Itlxw" class="br-100 h4 w4 dib ba b--black-05 pa2" title="Photo of a kitty staring at you">
-      <!-- <h1 class="f3 mb2">Lorcan Blake</h1>
-      <h2 class="f5 fw4 gray mt0">Tech mentor</h2> -->
+        // scroll
+        smoothScrollStep({
+          startTime: startTime,
+          startX: startX || 0,
+          startY: 0,
+          x: x || 0,
+          y: 0,
+        });
+      }
+
+      function ease(k) {
+        //return 0.5 * (1 - Math.cos(Math.PI * k));
+        //return 1-(--k)*k*k*k;
+        //return k*k*k*k*k;
+        return -Math.pow(2, -10 * k) + 1;
+      }
+
+      const SCROLL_TIME = 200;
+
+      function smoothScrollStep(context) {
+        let time = performance.now();
+        let value;
+        let currentX;
+        let elapsed = (time - context.startTime) / SCROLL_TIME;
+
+        // avoid elapsed times higher than one
+        elapsed = elapsed > 1 ? 1 : elapsed;
+
+        // apply easing to elapsed time
+        value = ease(elapsed);
+
+        currentX = context.startX + (context.x - context.startX) * value;
+
+        // document.body.scrollTo(currentX, 0);
+        document.body.scrollLeft = currentX;
+
+        // keep scrolling if we have not reached our destination
+        // this was > 1.0 and that wasn't working for some reason
+        if (Math.abs(currentX - context.x) > 2.0) {
+          requestAnimationFrame(smoothScrollStep.bind(window, context));
+        } else {
+          // other side of possible mobile optimizaton thing
+          // document.body.style.backgroundColor = realColor;
+        }
+      }
+
+      function getComputed(propertyName) {
+        return Number(
+          getComputedStyle(bookElement)
+            .getPropertyValue(propertyName)
+            .replace("px", "")
+        );
+      }
+
+      function turnPage(x) {
+        let turnDirection = 1; // the null case: if x is not provided
+
+        if (x < window.innerWidth / 3.0) {
+          turnDirection = -1;
+        }
+
+        let currentLeftOffset = document.body.scrollLeft;
+
+        let columnWidth = getComputed("column-width");
+        let columnGap = getComputed("column-gap");
+        let columnTotal = columnWidth + columnGap;
+
+        let closestPageNumber =
+          Math.floor(currentLeftOffset / columnTotal) + turnDirection;
+
+        writePageNumber(closestPageNumber);
+
+        let closestPageEdge = closestPageNumber * columnTotal;
+
+        // wiggle room
+        if (Math.abs(closestPageEdge - currentLeftOffset) < 5.0) {
+          closestPageEdge += columnTotal * turnDirection;
+          writePageNumber(closestPageNumber + 1); // hacky
+        }
+
+        if (endElement.getBoundingClientRect().x < window.innerWidth / 2.0) {
+          return;
+        }
+
+        // FOR SOME REASON
+        // this makes it work better on mobile??
+        // different compositing? idk, maybe i'm imagining things
+        // document.body.style.backgroundColor = offColor;
+        smoothScroll(closestPageEdge);
+      }
+
+      function turnToPage(pageNumber) {
+        let columnWidth = getComputed("column-width");
+        let columnGap = getComputed("column-gap");
+        let columnTotal = columnWidth + columnGap;
+
+        let pageEdge = pageNumber * columnTotal;
+
+        writePageNumber(pageNumber);
+
+        // document.body.scrollTo(pageEdge, 0);
+        document.body.scrollLeft = pageEdge;
+      }
+
+      function turnToAnchor(anchor) {
+        let editedAnchor = "chapter_" + anchor.replace("#", "");
+
+        let anchoredHeading = Array.from(document.querySelectorAll("h2")).find(
+          (heading) => {
+            return heading.getAttribute("id") == editedAnchor;
+          }
+        );
+
+        console.log(anchor);
+        console.log(editedAnchor);
+        console.log(anchoredHeading);
+
+        anchoredHeading.scrollIntoViewIfNeeded();
+
+        let desiredPageEdge =
+          (window.innerWidth - bookElement.getBoundingClientRect().width) / 2.0;
+        let offset =
+          anchoredHeading.getBoundingClientRect().x - desiredPageEdge;
+
+        document.body.scrollLeft += offset;
+      }
+
+      function setTextScale(scale) {
+        document.documentElement.style.setProperty(
+          "--font-size",
+          `${baseFontSize * scale}px`
+        );
+      }
+
+      function writePageNumber(pageNumber) {
+        window.localStorage.setItem("pageNumber", pageNumber);
+      }
+
+      function readPageNumber() {
+        let pageNumber = Number(window.localStorage.getItem("pageNumber"));
+        if (pageNumber > 1) {
+          turnToPage(pageNumber); // i'm not TOTALLY sure why i need the +1... oh well
+          // display a tiny bookmark here or something; would be nice!
+        }
+      }
+
+      var bookElement;
+      var navElement;
+      var endElement;
+      var baseFontSize = 18.0; // it would be cool to be able to read this from the doc somehow
+      var lastMouseDown = Date.now();
+      var lastClick = Date.now();
+
+      document.addEventListener("DOMContentLoaded", (e) => {
+        bookElement = document.querySelector("div.book");
+        navElement = document.querySelector("nav");
+        endElement = document.querySelector("div.last-page");
+
+        if (window.location.hash.length > 0) {
+          turnToAnchor(window.location.hash);
+        } else {
+          readPageNumber();
+        }
+
+        // hash change detector
+        // note: it's a window event, not a document event
+
+        window.addEventListener("hashchange", (e) => {
+          turnToAnchor(window.location.hash);
+        });
+
+        // toc button
+
+        document.querySelector("#nav-button").addEventListener("click", (e) => {
+          toggleNav();
+          e.stopPropagation();
+        });
+
+        // toc text size buttons
+
+        document
+          .querySelectorAll("nav div.controls button")
+          .forEach((button) => {
+            let size = `${baseFontSize * button.dataset.scale}px`;
+            button.style.fontSize = size;
+
+            button.addEventListener("click", (e) => {
+              setTextScale(e.target.dataset.scale);
+              e.stopPropagation();
+            });
+          });
+
+        // toc chapter links
+
+        document.querySelectorAll("nav a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            toggleNav();
+            turnToAnchor(e.target.getAttribute("href"));
+            e.stopPropagation();
+          });
+        });
+
+        // ehh maybe remove this
+
+        document.addEventListener(
+          "wheel",
+          (e) => {
+            if (navElement.className == "visible") {
+              return;
+            }
+
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+              e.preventDefault();
+              document.body.scrollLeft += e.deltaY;
+            }
+          },
+          { passive: false }
+        );
+      });
+
+      document.addEventListener("mousedown", function (e) {
+        lastMouseDown = Date.now();
+      });
+
+      // values in millis
+      const CLICK_DEBOUNCE_TIME = 100;
+      const LONG_PRESS_TIME = 250;
+
+      let toggleNav = function () {
+        if (navElement.className == "invisible") {
+          navElement.className = "visible";
+        } else {
+          navElement.className = "invisible";
+        }
+      };
+
+      document.addEventListener("click", function (e) {
+        let now = Date.now();
+
+        // don't advance on long press (text selection?)
+        if (now - lastMouseDown > LONG_PRESS_TIME) {
+          return;
+        }
+
+        // don't advance on double-click
+        if (now - lastClick < CLICK_DEBOUNCE_TIME) {
+          return;
+        }
+
+        lastClick = now;
+
+        // don't advance on link click
+        if (e.target.tagName == "A") {
+          return;
+        }
+
+        // don't advance if we are selecting text
+        if (window.getSelection().toString().length > 0) {
+          return;
+        }
+
+        turnPage(e.clientX);
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="invisible">
+      <div class="controls">
+        <button data-scale="1.0">a</button>
+        <button data-scale="1.2">a</button>
+        <button data-scale="1.4">a</button>
+        <button data-scale="2.0">a</button>
+      </div>
+      <h1>Table of contents</h1>
+      <ol>
+        <li><a href="#welcome">Note to&nbsp;Readers</a></li>
+        <li><a href="#now">Now</a></li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+        <li>
+          <a href="#peer-learning">Peer Learning</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="book">
+      <img
+        class="cover"
+        src="https://d2w9rnfcy7mm78.cloudfront.net/7189027/large_4c6e0b661d18f283fb9bb61224ee1694.png?1588870679?bc=0"
+        alt="Lorcan Blake"
+      />
+
+      <div class="title">
+        <h1>
+          <span>an office</span><span>a portfolio</span><span>a life</span>
+        </h1>
+        <h2>
+          "a portfolio, a life"<br />
+          <!-- Lorcan Blake -->
+        </h2>
+      </div>
+
+      <!-- <video height="" width="100%" class="cover" controls="">
+        <source
+          src="https://jondashkyle.s3.amazonaws.com/2020-04/ways-of-going-live.mp4"
+          type="video/mp4"
+        />
+        <div
+          class="cover"
+          style="
+            background: url(https://d2w9rnfcy7mm78.cloudfront.net/7557840/large_31f4f449317574c521ca2f7793a54edf.png?1591389516?bc=0)
+              center;
+          "
+        ></div>
+      </video> -->
+
+      <h2 id="welcome">
+        <a href="#welcome">Welcome!</a>
+      </h2>
+      <p>
+        <small>I work for <em>INCO</em></small
+        >, mentoring people from all walks of life interested in working in the
+        tech industry. I'm on a mission to unravel the world of tech for
+        everyone, from how tech teams operate to the key concepts of programming
+        and digital design.
+      </p>
+      <!-- <img
+        class="cover"
+        src="https://d2w9rnfcy7mm78.cloudfront.net/2885771/large_0cab526d3c630d6d7ce85dc0985deb8f.jpg?1539763708?bc=1"
+        title=""
+      /> -->
+      <p>
+        The text wears its origins on its sleeve. Initially, I edited out each
+        chapter's little introductory line, intended to reorient the daily
+        reader to the action; reading it straight through, they're repetitive, a
+        bit "duh." But then I discovered that I missed them: their dorky energy;
+        the breathless, retro sense of "last week on <em>Annabel Scheme</em>!"
+      </p>
+      <p>
+        *The Adventure of the New Golden Gate* is neither a sequel nor a prequel
+        to the
+        <a href="/annabel-scheme" target="_new"
+          >original Annabel Scheme adventure</a
+        >
+        published in 2009, but rather... another possibility. Scheme fans get
+        it. We'll find her&nbsp;yet.
+      </p>
+      <p class="spacetime">Portlaoise, Ireland<br />July 2020</p>
+      <h2 id="now">
+        <a href="#now">Now</a>
+      </h2>
+      <p>
+        <small>The burrito cannons blared at noon</small>, and into the sky
+        above the city a fusillade of foil tubes went sailing: carnitas, carne
+        asada, veggie supreme. They traced high glinting parabolas, hanging
+        perfectly still at the apex, then accelerating earthward until their
+        napkin-parachutes deployed. Pedestrians turned, arms outstretched.
+        Cyclists pulled over; the moving catch, though tempting, was nearly
+        impossible.
+      </p>
+      <p>
+        In the old days, you’d use the phone, call in your order like an
+        artillery scout, shouting your cross streets and hoping for the best.
+        But now the ordering and targeting is all done with software, the
+        burritos guided by miniscule GPS chips. If you return one to the
+        taqueria they give you a free agua fresca.
+      </p>
+      <p class="spacetime">Portlaoise, Ireland<br />July 2020</p>
+      <h2 id="peer-learning">
+        <a href="#peer-learning">Peer Learning</a>
+      </h2>
+      <p>
+        <small>The burrito cannons blared at noon</small>, and into the sky
+        above the city a fusillade of foil tubes went sailing: carnitas, carne
+        asada, veggie supreme. They traced high glinting parabolas, hanging
+        perfectly still at the apex, then accelerating earthward until their
+        napkin-parachutes deployed. Pedestrians turned, arms outstretched.
+        Cyclists pulled over; the moving catch, though tempting, was nearly
+        impossible.
+      </p>
+      <p>
+        In the old days, you’d use the phone, call in your order like an
+        artillery scout, shouting your cross streets and hoping for the best.
+        But now the ordering and targeting is all done with software, the
+        burritos guided by miniscule GPS chips. If you return one to the
+        taqueria they give you a free agua fresca.
+      </p>
+      <p>
+        Every day, Stella Pajunas caught her lunch on the sidewalk in front of
+        Alta Bay City Development headquarters. As the chief executive of the
+        ABCD, she didn’t have to catch it herself; she could have sent an
+        underling scurrying to the sidewalk. But Stella Pajunas was smart. Her
+        daily appearance marked her as a woman of the people.
+      </p>
+      <p>
+        On a sunny Tuesday in June, Stella Pajunas missed her burrito. This
+        wouldn’t have been a problem except that multiple pedestrian onlookers
+        watched her step onto the sidewalk, reach upward, and vanish. Burrito,
+        splat.
+      </p>
+      <p>Dramatic enough way for a mystery to begin.</p>
+      <p>
+        My name is Will Portacio. I have been an archivist, a librarian and a
+        Lyft driver. Until recently, I was the assistant to the Bay Area’s
+        greatest detective. I’m publishing this now because of what happened to
+        Stella Pajunas and the detective and all of us.
+      </p>
+      <p>
+        Annabel Scheme kept an office in Rotten City. The locals love to call it
+        that, insisting endlessly on their neighborhood’s sinister character; in
+        fact, it’s utterly sweet, a mix of old houses and new condos, espresso
+        bars and metalworking shops, all of it softened by trees, plum and palm
+        and ginkgo. Scheme’s office occupied the top floor of a narrow brick
+        building that also housed a rare book dealer, a biotech consultancy and
+        a website that reviewed electric bicycles. On the ground floor, there
+        was a jam factory. I couldn’t quite see the railroad tracks from my
+        desk, but when the high-speed to Fresno shot past, it made a little
+        sonic boom that rattled the windows.
+      </p>
+      <p>
+        Scheme had conducted investigations for the City of San Francisco and
+        the Port of Oakland; for Google and Dragoman; for Chevron and Chez
+        Panisse. Her specialty was the anomalous, the irrational. When something
+        seemed like it must be a ghost, but surely it wasn’t, you called Annabel
+        Scheme. It was only ever sometimes a ghost.
+      </p>
+      <p>
+        The ABCD itself was a steady client, thanks to its security chief, whose
+        name was Arbusto Slab. It was Slab who stood now in Scheme’s office,
+        perfectly quadrilateral, wide shouldered and wide hipped. It was Slab
+        who had just described to us the strange fate of his boss.
+      </p>
+      <p>He squinted at me, jabbed a finger. “Who’s the nerd?”</p>
+      <p>
+        “I am the nerd,” Scheme replied coolly. “My very hip partner is a
+        renowned analyst of the digital and the occult.”
+      </p>
+      <p>
+        No one truly hip has ever been called hip, but I appreciated the
+        gesture. Arbusto Slab gazed at me and whatever evaluation he made, he
+        mentally crumpled it up and threw it in a wastebasket. He looked back at
+        Scheme. and, I suspect , never thought of me again.
+      </p>
+      <p>
+        “Well, anyway, she’s been gone a whole day now, or near enough, and the
+        board of directors… they are not calm people, Scheme. Not calm at all.
+        It’s a big operation, the ABCD. I really think—”
+      </p>
+      <p>“I’ll take the case,” Scheme said. “We’ll meet you on the bay.”</p>
+      <p>
+        Scheme’s electric pickup was parked across the street. The jam factory
+        was simmering 300 pounds of seascape strawberries; the air was thick
+        with them. One of the website’s editors was pedaling a cargo bike up and
+        down the block. Rotten City.
+      </p>
+      <p>
+        Scheme took us blasting south on Interstate 1080, windows down, her red
+        curls whipping in the wind. The big cities of the bay flashed by on
+        either side: busy Moletown, glittering San Leandro, Asparagus Flats with
+        its high-rise greenhouses.
+      </p>
+      <p>I wondered if Scheme had worked up any theories.</p>
+      <p>
+        “Sure. Most likely explanation is, Stella Pajunas was never real to
+        start with. Ectoplasmic projection. Mass hallucination, maybe.”
+      </p>
+      <p>
+        Scheme was theorizing that the ABCD — really, the whole Bay Area — had
+        been managed for 10 years by a mass hallucination?
+      </p>
+      <h3>
+        Definition
+      </h3>
+      <p>“It would explain some things, wouldn’t it?”</p>
+      <p>
+        We crossed into the sprawl of Peralta City. On the other side of 1080
+        was the Island of the Cats, which was neither an island nor home to any
+        special concentration of cats.
+      </p>
+      <p>
+        Scheme was still theorizing. “It matters how she disappeared. If there
+        was a flash of light, that’s one thing. Smell of brimstone, totally
+        different thing. I hope she didn’t just vanish between frames.”
+      </p>
+      <p>Between frames?</p>
+      <p>
+        “Here one millisecond, gone the next. The best explanation for that kind
+        of phenomenon is that we’re living in a computer simulation, and I am
+        going to be PISSED if we’re living in a computer simulation.”
+      </p>
+      <p>Scheme’s phone rang, warbling the theme to “Vertigo.”</p>
+      <p>“Slab,” she said into the air. “We’re on our way.”</p>
+      <p>
+        The security chief’s voice rumbled in the pickup’s speakers. “Yeah,
+        well. She’s back.”
+      </p>
+      <p>“Pajunas? The one who disappeared?”</p>
+      <p>
+        “Yeah, and she’s screaming a lot.” In the background, we heard a shriek.
+      </p>
+      <h3>
+        Solution
+      </h3>
+      <p>
+        “Stuff about the bay. How they didn’t fill it. I don’t know. What did
+        she just say, Lucy?” A voice replied. “Okay, yeah. She just said, it was
+        all a mistake and now – yeah, she’s crying. Anyway. I still think you
+        should come.” Dramatic enough way for a mystery to begin.
+      </p>
+      <p>
+        Scheme pushed the pickup even faster, the whole boiling megacity of the
+        bay a blur on either side of us, and I wondered where Stella Pajunas had
+        been for the last twenty-four hours. What she’d seen.
+      </p>
+      <p>
+        “Call in some burritos, will you?” Scheme said. “We’ll catch them when
+        we get there.”
+      </p>
+      <p>“It would explain some things, wouldn’t it?”</p>
+      <p>
+        We crossed into the sprawl of Peralta City. On the other side of 1080
+        was the Island of the Cats, which was neither an island nor home to any
+        special concentration of cats.
+      </p>
+      <p>
+        Scheme was still theorizing. “It matters how she disappeared. If there
+        was a flash of light, that’s one thing. Smell of brimstone, totally
+        different thing. I hope she didn’t just vanish between frames.”
+      </p>
+      <p>Between frames?</p>
+      <p>
+        “Here one millisecond, gone the next. The best explanation for that kind
+        of phenomenon is that we’re living in a computer simulation, and I am
+        going to be PISSED if we’re living in a computer simulation.”
+      </p>
+      <p>Scheme’s phone rang, warbling the theme to “Vertigo.”</p>
+      <p>“Slab,” she said into the air. “We’re on our way.”</p>
+      <p>
+        The security chief’s voice rumbled in the pickup’s speakers. “Yeah,
+        well. She’s back.”
+      </p>
+      <p>“Pajunas? The one who disappeared?”</p>
+      <p>
+        “Yeah, and she’s screaming a lot.” In the background, we heard a shriek.
+      </p>
+      <p>
+        “Stuff about the bay. How they didn’t fill it. I don’t know. What did
+        she just say, Lucy?” A voice replied. “Okay, yeah. She just said, it was
+        all a mistake and now – yeah, she’s crying. Anyway. I still think you
+        should come.” Dramatic enough way for a mystery to begin.
+      </p>
+      <p>
+        Scheme pushed the pickup even faster, the whole boiling megacity of the
+        bay a blur on either side of us, and I wondered where Stella Pajunas had
+        been for the last twenty-four hours. What she’d seen.
+      </p>
+      <p>
+        “Call in some burritos, will you?” Scheme said. “We’ll catch them when
+        we get there.”
+      </p>
+      <p>“It would explain some things, wouldn’t it?”</p>
+      <p>
+        We crossed into the sprawl of Peralta City. On the other side of 1080
+        was the Island of the Cats, which was neither an island nor home to any
+        special concentration of cats.
+      </p>
+      <p>
+        Scheme was still theorizing. “It matters how she disappeared. If there
+        was a flash of light, that’s one thing. Smell of brimstone, totally
+        different thing. I hope she didn’t just vanish between frames.”
+      </p>
+      <p>Between frames?</p>
+      <p>
+        “Here one millisecond, gone the next. The best explanation for that kind
+        of phenomenon is that we’re living in a computer simulation, and I am
+        going to be PISSED if we’re living in a computer simulation.”
+      </p>
+      <p>Scheme’s phone rang, warbling the theme to “Vertigo.”</p>
+      <p>“Slab,” she said into the air. “We’re on our way.”</p>
+      <p>
+        The security chief’s voice rumbled in the pickup’s speakers. “Yeah,
+        well. She’s back.”
+      </p>
+      <p>“Pajunas? The one who disappeared?”</p>
+      <img
+        class="cover"
+        src="https://d2w9rnfcy7mm78.cloudfront.net/7708916/large_a66151b9ee9dbbbf7096d5d457f43e24.png?1592469946?bc=0"
+        title=""
+      />
+      <p>
+        “Yeah, and she’s screaming a lot.” In the background, we heard a shriek.
+      </p>
+      <p>
+        “Stuff about the bay. How they didn’t fill it. I don’t know. What did
+        she just say, Lucy?” A voice replied. “Okay, yeah. She just said, it was
+        all a mistake and now – yeah, she’s crying. Anyway. I still think you
+        should come.” Dramatic enough way for a mystery to begin.
+      </p>
+      <p>
+        Scheme pushed the pickup even faster, the whole boiling megacity of the
+        bay a blur on either side of us, and I wondered where Stella Pajunas had
+        been for the last twenty-four hours. What she’d seen.
+      </p>
+      <p>
+        “Call in some burritos, will you?” Scheme said. “We’ll catch them when
+        we get there.”
+      </p>
+      <p>“It would explain some things, wouldn’t it?”</p>
+      <p>
+        We crossed into the sprawl of Peralta City. On the other side of 1080
+        was the Island of the Cats, which was neither an island nor home to any
+        special concentration of cats.
+      </p>
+      <p>
+        Scheme was still theorizing. “It matters how she disappeared. If there
+        was a flash of light, that’s one thing. Smell of brimstone, totally
+        different thing. I hope she didn’t just vanish between frames.”
+      </p>
+      <p>Between frames?</p>
+      <p>
+        “Here one millisecond, gone the next. The best explanation for that kind
+        of phenomenon is that we’re living in a computer simulation, and I am
+        going to be PISSED if we’re living in a computer simulation.”
+      </p>
+      <p>Scheme’s phone rang, warbling the theme to “Vertigo.”</p>
+      <p>“Slab,” she said into the air. “We’re on our way.”</p>
+      <p>
+        The security chief’s voice rumbled in the pickup’s speakers. “Yeah,
+        well. She’s back.”
+      </p>
+      <p>“Pajunas? The one who disappeared?”</p>
+      <p>
+        “Yeah, and she’s screaming a lot.” In the background, we heard a shriek.
+      </p>
+      <p>
+        “Stuff about the bay. How they didn’t fill it. I don’t know. What did
+        she just say, Lucy?” A voice replied. “Okay, yeah. She just said, it was
+        all a mistake and now – yeah, she’s crying. Anyway. I still think you
+        should come.” Dramatic enough way for a mystery to begin.
+      </p>
+      <img
+        class="cover"
+        src="https://d2w9rnfcy7mm78.cloudfront.net/7708915/large_84294fac1f11d5c9c00383f7797b73bd.png?1592469946?bc=0"
+        title=""
+      />
+      <p>
+        Scheme pushed the pickup even faster, the whole boiling megacity of the
+        bay a blur on either side of us, and I wondered where Stella Pajunas had
+        been for the last twenty-four hours. What she’d seen.
+      </p>
+      <p>
+        “Call in some burritos, will you?” Scheme said. “We’ll catch them when
+        we get there.”
+      </p>
+
+      <h2>
+        <em>Thank you</em>
+      </h2>
+      <div class="last-page">
+        <img
+          class="cover"
+          src="https://d2w9rnfcy7mm78.cloudfront.net/7708915/large_84294fac1f11d5c9c00383f7797b73bd.png?1592469946?bc=0"
+          title=""
+          style="opacity: 0%;"
+        />
+      </div>
     </div>
-  </article>
-  <!-- <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGVhVroHDKFHQ/profile-displayphoto-shrink_200_200/0?e=1597881600&amp;v=beta&amp;t=9M0Y660qWNoeKXClpZJuSTPafRy9p4pLYuTv57Itlxw" class="mw4 pv3 br4 f5 measure" alt="Photo of outer space"> -->
-  <h1 class="f5 f4-ns serif">Welcome! 👋</h1>
-  <p class="measure lh-copy center tl">
- My name is Lorcan. I work for INCO, mentoring people from all walks of life interested in working in the tech industry. </p>
-  <p class="measure lh-copy center tl">I'm on a mission to unravel the world of tech for everyone, from how tech teams operate to the key concepts of programming and digital design. Have fun!</p>
-  <!-- <p class="measure lh-copy center tl"> This site began life as an extra-curricular resource for my students.</p> -->
-</article>
-
-  </article>
-</section>
-
-<!-- <div class="ph3 ph5-ns mb6">
-          <div class="mw9 center">
-            <h3 class="f6 fw6 mt0 mb4 tc serif b i">Featured in</h3>
-            <div class="flex items-center mw6 mw7-l center">
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/californiasunday.com?size=256"></div>
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/amazon.com?size=256"></div>
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/ibm.com?size=256"></div>
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/jaguar.com?size=256"></div>
-
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/nerdwallet.com?size=256"></div>
-
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/heroku.com?size=256"></div>
-              <div class="pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/who.int?size=256"></div>
-
-            </div>
-            <div class="flex items-center mw6 mw7-l center">
-
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/npr.org?size=256"></div>
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/airbnb.com?size=256"></div>
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/facebook.com?size=256"></div>
-
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/twitter.com?size=256"></div>
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/salesforce.com?size=256"></div>
-
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/fender.com?size=256"></div>
-              <div class="dtc pa2 pa3-l"><img class="br2 db w-100" src="http://logo.clearbit.com/monicahq.com?size=256"></div>
-            </div>
-          </div>
-        </div> -->
-
-
-<footer class="pv3 ph3 ph5-m ph6-l mb4 gray">
-  <small class="f6 db tc">© 2020 <b class="ttu">Lorcan Blake</b>., All Rights Reserved</small>
-  <div class="tc mt3">
-    <a href="#"    title="Terms" class="f6 dib ph2 link gray dim">Terms of Use</a>
-    <a href="#"    title="Terms" class="f6 dib ph2 link gray dim">Contact</a>
-    <a href="#"    title="Privacy" class="f6 dib ph2 link gray dim">Elsewhere</a>
-  </div>
-</footer>
-</main>
-
-<style>
-/*
-
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-
-*/
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  color: #111;
-  color: rgba(0,0,0,.7);
-  background-color: #fff;
-  background-color: rgba(255,255,255,.2);
-}
-
-.hljs-comment,
-.hljs-quote {
-  color: #998;
-  font-style: italic;
-}
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-subst {
-  color: #333;
-  font-weight: bold;
-}
-
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag .hljs-attr {
-  color: #006C71;
-}
-
-.hljs-string,
-.hljs-doctag {
-  color: #C64774;
-}
-
-.hljs-title,
-.hljs-section,
-.hljs-selector-id {
-  color: #900;
-  font-weight: bold;
-}
-
-.hljs-subst {
-  font-weight: normal;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-  color: #458;
-  font-weight: bold;
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-  color: #00449E;
-  font-weight: normal;
-}
-
-.hljs-regexp,
-.hljs-link {
-  color: #009926;
-}
-
-.hljs-symbol,
-.hljs-bullet {
-  color: #990073;
-}
-
-.hljs-built_in,
-.hljs-builtin-name {
-  color: #0086b3;
-}
-
-.hljs-meta {
-  color: #999;
-  font-weight: bold;
-}
-
-.hljs-deletion {
-  background: #fdd;
-}
-
-.hljs-addition {
-  background: #dfd;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
-</style>
-
-
-</body><style id="stylish-4" class="stylish" type="text/css">@namespace url(http://www.w3.org/1999/xhtml);
-body, input, .navigator-toolbox, .toolbarbutton-text, .sidebar-title{
-text-shadow: 0px 0px 1px #ACACAC;
-}</style><style id="stylish-6" class="stylish" type="text/css">/* The emerging W3C standard
-   that is currently Firefox-only */
- * {
-    scrollbar-width: thin;
-    scrollbar-color: transparent #eee;
-}
-/* Works on Chrome/Edge/Safari */
- *::-webkit-scrollbar {
-    width: .5vw;
-}
-*::-webkit-scrollbar-track {
-    background: transparent;
-}
-*::-webkit-scrollbar-thumb {
-    background-color: #eee;
-    border-radius: 10px;
-    border: 3px solid transparent;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-    background-color: #ddd;
-}</style></html>
+    <button id="nav-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        x="0px"
+        y="0px"
+        width="100%"
+        height="100%"
+        viewBox="0 0 80 40"
+        xml:space="preserve"
+      >
+        <g>
+          <rect x="0" y="10" width="5" height="1" />
+          <rect x="0" y="20" width="5" height="1" />
+          <rect x="0" y="30" width="5" height="1" />
+          <rect x="10" y="10" width="70" height="1" />
+          <rect x="10" y="20" width="70" height="1" />
+          <rect x="10" y="30" width="70" height="1" />
+        </g>
+      </svg>
+    </button>
+    <div class="shade left-shade"></div>
+    <div class="shade right-shade"></div>
+  </body>
+</html>
